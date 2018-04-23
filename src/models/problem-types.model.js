@@ -6,10 +6,18 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const problemTypes = sequelizeClient.define('problem_types', {
-    text: {
+    description: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        is: ["^[a-z]+$",'i'],
+        notNull: true,            // won't allow null
+        
+        notEmpty: true,           // don't allow empty strings
+        
+      }
     }
+
   }, {
     hooks: {
       beforeCount(options) {

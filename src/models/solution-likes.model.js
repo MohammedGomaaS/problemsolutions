@@ -6,10 +6,7 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const solutionLikes = sequelizeClient.define('solution_likes', {
-    text: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
+    
   }, {
     hooks: {
       beforeCount(options) {

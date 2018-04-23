@@ -6,8 +6,19 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const userTypes = sequelizeClient.define('user_types', {
-    text: {
+    description: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        is: ["^[a-z]+$",'i'],
+        notNull: true,            // won't allow null
+        
+        notEmpty: true,           // don't allow empty strings
+        
+      }
+    },
+    level: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {

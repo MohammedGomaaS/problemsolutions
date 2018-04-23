@@ -6,9 +6,51 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const users = sequelizeClient.define('users', {
-    text: {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        
+         // checks for uppercase
+        notNull: true,            // won't allow null
+        
+        notEmpty: true,           // don't allow empty strings
+        
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,  
+        // checks for uppercase
+       notNull: true,            // won't allow null
+       
+       notEmpty: true,           // don't allow empty strings
+       
+     }
+      
+    },
+    mobile: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+       notNull: true,            // won't allow null
+       notEmpty: true,           // don't allow empty strings
+     }
+    },
+    image: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        is: "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$",
+        notNull: true,            // won't allow null
+        notEmpty: true,           // don't allow empty strings
+      }
     }
   }, {
     hooks: {

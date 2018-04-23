@@ -6,9 +6,21 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const problems = sequelizeClient.define('problems', {
-    text: {
+    title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: true,            // won't allow null
+        notEmpty: true,           // don't allow empty strings
+      }
+    },
+    body: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: true,            // won't allow null
+        notEmpty: true,           // don't allow empty strings
+      }
     }
   }, {
     hooks: {

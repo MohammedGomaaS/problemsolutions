@@ -6,9 +6,13 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const solutionReplies = sequelizeClient.define('solution_replies', {
-    text: {
-      type: DataTypes.STRING,
-      allowNull: false
+    body: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: true,            // won't allow null
+        notEmpty: true,           // don't allow empty strings
+      }
     }
   }, {
     hooks: {
