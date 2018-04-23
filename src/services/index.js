@@ -6,6 +6,7 @@ const problemSolutions = require('./problem-solutions/problem-solutions.service.
 const userTypes = require('./user-types/user-types.service.js');
 const solutionReplies = require('./solution-replies/solution-replies.service.js');
 const solutionLikes = require('./solution-likes/solution-likes.service.js');
+const test = require('./test/test.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users);
@@ -16,4 +17,5 @@ module.exports = function (app) {
   app.configure(userTypes);
   app.configure(solutionReplies);
   app.configure(solutionLikes);
+  app.configure(test);
 };
