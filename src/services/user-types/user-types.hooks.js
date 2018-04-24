@@ -9,10 +9,10 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [restrictToAdmin(), authentication()],
-    update: [restrictToAdmin(), authentication()],
-    patch: [restrictToAdmin(), authentication()],
-    remove: [restrictToAdmin(), authentication()]
+    create: [authentication(),restrictToAdmin()],
+    update: [authentication(),restrictToAdmin() ],
+    patch: [authentication(),restrictToAdmin()],
+    remove: [authentication(),restrictToAdmin()]
   },
 
   after: {
