@@ -2,15 +2,17 @@
 
 const restrictToAdmin = require('../../hooks/restrict-to-admin');
 
+const authentication = require('../../hooks/authentication');
+
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [restrictToAdmin()],
-    update: [restrictToAdmin()],
-    patch: [restrictToAdmin()],
-    remove: [restrictToAdmin()]
+    create: [restrictToAdmin(), authentication()],
+    update: [restrictToAdmin(), authentication()],
+    patch: [restrictToAdmin(), authentication()],
+    remove: [restrictToAdmin(), authentication()]
   },
 
   after: {

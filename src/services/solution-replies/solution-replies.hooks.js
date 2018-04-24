@@ -6,15 +6,17 @@ const restrictToOwner = require('../../hooks/restrict-to-owner');
 
 const restrictToOwnerOrAdmin = require('../../hooks/restrict-to-owner-or-admin');
 
+const authentication = require('../../hooks/authentication');
+
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [associateCurrentUserToField()],
-    update: [restrictToOwner()],
-    patch: [restrictToOwner()],
-    remove: []
+    create: [associateCurrentUserToField(), authentication()],
+    update: [restrictToOwner(), authentication()],
+    patch: [restrictToOwner(), authentication()],
+    remove: [authentication()]
   },
 
   after: {

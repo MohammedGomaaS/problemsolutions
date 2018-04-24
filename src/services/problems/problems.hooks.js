@@ -4,15 +4,17 @@ const associateCurrentUserToField = require('../../hooks/associate-current-user-
 
 const restrictToOwnerOrAdmin = require('../../hooks/restrict-to-owner-or-admin');
 
+const authentication = require('../../hooks/authentication');
+
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [associateCurrentUserToField()],
-    update: [],
-    patch: [],
-    remove: []
+    create: [associateCurrentUserToField(), authentication()],
+    update: [authentication()],
+    patch: [authentication()],
+    remove: [authentication()]
   },
 
   after: {

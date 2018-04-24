@@ -1,14 +1,12 @@
 // Use this hook to manipulate incoming or outgoing data.
 // For more information on hooks see: http://docs.feathersjs.com/api/hooks.html
-const hooks = require('feathers-authentication-hooks');
-
+const { BadRequest } = require('@feathersjs/errors');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (options = {}) {
-  return hooks.restrictToRoles({
-    roles: [1],
-    fieldName: 'userTypeId',
-    idField: 'id',
-    ownerField: 'userId',
-    owner: true
-});
+  return async context => {
+    if(context.data.userTypeId=='1'){
+      throw new BadRequest('you can not create yourself as admin');
+    }
+    return context;
+  };
 };

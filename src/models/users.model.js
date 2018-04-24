@@ -12,7 +12,8 @@ module.exports = function (app) {
       validate: {
         
          // checks for uppercase
-        notNull: true,            // won't allow null
+      
+                  // won't allow null
         
         notEmpty: true,           // don't allow empty strings
         
@@ -24,7 +25,7 @@ module.exports = function (app) {
       validate: {
         isEmail: true,  
         // checks for uppercase
-       notNull: true,            // won't allow null
+               // won't allow null
        
        notEmpty: true,           // don't allow empty strings
        
@@ -35,21 +36,22 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-       notNull: true,            // won't allow null
+                // won't allow null
        notEmpty: true,           // don't allow empty strings
      }
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$",
-        notNull: true,            // won't allow null
-        notEmpty: true,           // don't allow empty strings
+        
+       
+                 // won't allow null
+        notEmpty: true           // don't allow empty strings
       }
     }
   }, {

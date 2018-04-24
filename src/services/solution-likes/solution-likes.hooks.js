@@ -2,15 +2,17 @@
 
 const associateCurrentUserToField = require('../../hooks/associate-current-user-to-field');
 
+const authentication = require('../../hooks/authentication');
+
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [associateCurrentUserToField()],
-    update: [],
-    patch: [],
-    remove: []
+    create: [associateCurrentUserToField(), authentication()],
+    update: [authentication()],
+    patch: [authentication()],
+    remove: [authentication()]
   },
 
   after: {
