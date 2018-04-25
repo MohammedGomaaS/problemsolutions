@@ -13,10 +13,10 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [associateCurrentUserToField(), authentication()],
-    update: [restrictToOwner(), authentication()],
-    patch: [restrictToOwner(), authentication()],
-    remove: [authentication()]
+    create: [authentication(),associateCurrentUserToField()],
+    update: [authentication(),restrictToOwner()],
+    patch: [authentication(),restrictToOwner()],
+    remove: [authentication(),restrictToOwnerOrAdmin()]
   },
 
   after: {
