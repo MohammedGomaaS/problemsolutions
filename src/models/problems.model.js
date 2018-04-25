@@ -10,16 +10,16 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notNull: true,            // won't allow null
-        notEmpty: true,           // don't allow empty strings
+             // won't allow null
+        notEmpty: true          // don't allow empty strings
       }
     },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        notNull: true,            // won't allow null
-        notEmpty: true,           // don't allow empty strings
+            // won't allow null
+        notEmpty: true      // don't allow empty strings
       }
     }
   }, {
