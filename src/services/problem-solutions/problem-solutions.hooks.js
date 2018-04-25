@@ -14,8 +14,8 @@ module.exports = {
     find: [],
     get: [],
     create: [authentication(),associateCurrentUserToField()],
-    update: [authentication(),restrictToOwner()],
-    patch: [authentication(),restrictToOwner()],
+    update: [authentication(),restrictToOwner(),associateCurrentUserToField()],
+    patch: [authentication(),restrictToOwner(),associateCurrentUserToField()],
     remove: [authentication(),restrictToOwnerOrAdmin()]
   },
 
