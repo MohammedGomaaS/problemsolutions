@@ -10,9 +10,6 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: ["^[a-z]+$",'i'],
-        notNull: true,            // won't allow null
-        
         notEmpty: true,           // don't allow empty strings
         
       }
