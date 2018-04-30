@@ -14,6 +14,15 @@ module.exports = function (app) {
         notEmpty: true          // don't allow empty strings
       }
     },
+    userId: {
+      type: Sequelize.INTEGER(11),
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    }
+    ,
     body: {
       type: DataTypes.TEXT,
       allowNull: false,

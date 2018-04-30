@@ -8,9 +8,11 @@ const {
   hashPassword, protect
 } = require('@feathersjs/authentication-local').hooks;
 
+const populateUserSubDate = require('../../hooks/populate-user-sub-date');
+
 module.exports = {
   before: {
-    all: [],
+    all: [populateUserSubDate()],
     find: [],
     get: [],
     create: [preventUserFromCreateHimSelfAsAdmin(),hashPassword()],
@@ -49,7 +51,7 @@ module.exports = {
   after: {
     all: [],
     find: [ protect('password') ],
-    get: [ iff(isProvider('external'), keep('id', 'email', 'firstName', 'lastName')), protect('password') ],
+    get: [ /*iff(isProvider('external'), keep('id', 'email', 'firstName', 'lastName')),*/ protect('password') ],
     create: [ protect('password') ],
     update: [ protect('password') ],
     patch: [ protect('password') ],

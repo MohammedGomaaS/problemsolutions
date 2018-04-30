@@ -6,9 +6,11 @@ const restrictToOwnerOrAdmin = require('../../hooks/restrict-to-owner-or-admin')
 const restrictToOwner= require('../../hooks/restrict-to-owner');
 const authentication = require('../../hooks/authentication');
 
+const populateProblemSubData = require('../../hooks/populate-problem-sub-data');
+
 module.exports = {
   before: {
-    all: [],
+    all: [populateProblemSubData()],
     find: [],
     get: [],
     create: [authentication(),associateCurrentUserToField()],
