@@ -10,11 +10,6 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        
-         // checks for uppercase
-      
-                  // won't allow null
-        
         notEmpty: true,           // don't allow empty strings
         
       }
@@ -22,10 +17,9 @@ module.exports = function (app) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true,  
-        // checks for uppercase
-               // won't allow null
        
        notEmpty: true,           // don't allow empty strings
        
@@ -35,6 +29,7 @@ module.exports = function (app) {
     mobile: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
                 // won't allow null
        notEmpty: true,           // don't allow empty strings
@@ -50,7 +45,6 @@ module.exports = function (app) {
       validate: {
         
        
-                 // won't allow null
         notEmpty: true           // don't allow empty strings
       }
     }

@@ -18,6 +18,7 @@ module.exports = {
     create: [preventUserFromCreateHimSelfAsAdmin(),hashPassword()],
     update: [
       authenticate('jwt'),
+      hashPassword(),
       hooks.restrictToRoles({
         roles: [1],
         fieldName: 'userTypeId',
@@ -29,6 +30,7 @@ module.exports = {
 
     ],
     patch: [authenticate('jwt'),
+    hashPassword(),
       hooks.restrictToRoles({
         roles: [1],
         fieldName: 'userTypeId',
@@ -39,6 +41,7 @@ module.exports = {
       preventUserFromUpdateHimSelfAsAdmin()
     ],
     remove: [authenticate('jwt'),
+    
        hooks.restrictToRoles({
       roles: [1],
       fieldName: 'userTypeId',
