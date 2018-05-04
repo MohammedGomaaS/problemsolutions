@@ -26,6 +26,8 @@ module.exports = function (app) {
   problemSolutions.associate = function (models) {
     problemSolutions.belongsTo(models.problems);
     problemSolutions.belongsTo(models.users);
+    problemSolutions.belongsToMany(models.users, { through: models.solution_likes });
+    
   };
 
   return problemSolutions;

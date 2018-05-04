@@ -43,6 +43,7 @@ module.exports = function (app) {
   problems.associate = function (models) {
     problems.belongsTo(models.users);
     problems.belongsTo(models.problem_types)
+    problems.belongsToMany(models.users, { through: models.problem_likes });
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };

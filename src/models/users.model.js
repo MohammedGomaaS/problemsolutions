@@ -58,7 +58,9 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   users.associate = function (models) {
-    users.belongsTo(models.user_types);
+    users.belongsTo(models.user_types,{foreignKey: 'level'});
+    users.belongsToMany(models.problems, { through: models.problem_likes });
+    users.belongsToMany(models.problem_solutions, { through: models.solution_likes });
   };
 
   return users;

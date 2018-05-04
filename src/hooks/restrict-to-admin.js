@@ -6,7 +6,7 @@ const hooks = require('feathers-authentication-hooks');
 module.exports = function (options = {}) {
   return hooks.restrictToRoles({
     roles: [1],
-    fieldName: 'userTypeId',
+    fieldName: 'level',
     idField: 'id'
 })
 };

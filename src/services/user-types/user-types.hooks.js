@@ -1,4 +1,5 @@
 
+const { disallow, iff } = require('feathers-hooks-common');
 
 const restrictToAdmin = require('../../hooks/restrict-to-admin');
 
@@ -10,7 +11,7 @@ module.exports = {
     find: [],
     get: [],
     create: [authentication(),restrictToAdmin()],
-    update: [authentication(),restrictToAdmin() ],
+    update: [disallow()/*authentication(),restrictToAdmin()*/ ],
     patch: [authentication(),restrictToAdmin()],
     remove: [authentication(),restrictToAdmin()]
   },

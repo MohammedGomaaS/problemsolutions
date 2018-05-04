@@ -19,9 +19,10 @@ module.exports = function (app) {
     },
     level: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      unique: true
     }
-  }, {
+  },{
     hooks: {
       beforeCount(options) {
         options.raw = true;

@@ -1,9 +1,11 @@
 
+const { disallow, iff } = require('feathers-hooks-common');
+
 const hooks = require('feathers-authentication-hooks');
 const preventUserFromCreateHimSelfAsAdmin = require('../../hooks/prevent-user-from-create-him-self-as-admin');
 const preventUserFromUpdateHimSelfAsAdmin = require('../../hooks/prevent-user-from-update-him-self-as-admin');
 const { authenticate } = require('feathers-authentication').hooks;
-const {keep, iff, isProvider} = require('feathers-hooks-common');
+const {keep, isProvider} = require('feathers-hooks-common');
 const {
   hashPassword, protect
 } = require('@feathersjs/authentication-local').hooks;
@@ -16,24 +18,25 @@ module.exports = {
     find: [],
     get: [],
     create: [preventUserFromCreateHimSelfAsAdmin(),hashPassword()],
-    update: [
+    update: [/*
       authenticate('jwt'),
       hashPassword(),
       hooks.restrictToRoles({
         roles: [1],
-        fieldName: 'userTypeId',
+        fieldName: 'level',
         idField: 'id',
         ownerField: 'id',
         owner: true
     }),
       preventUserFromUpdateHimSelfAsAdmin(),
-
+*/
+disallow()
     ],
-    patch: [authenticate('jwt'),
+    patch: [
     hashPassword(),
       hooks.restrictToRoles({
         roles: [1],
-        fieldName: 'userTypeId',
+        fieldName: 'level',
         idField: 'id',
         ownerField: 'id',
         owner: true
@@ -44,7 +47,7 @@ module.exports = {
     
        hooks.restrictToRoles({
       roles: [1],
-      fieldName: 'userTypeId',
+      fieldName: 'level',
       idField: 'id',
       ownerField: 'id',
       owner: true

@@ -1,5 +1,7 @@
 
 
+const { disallow, iff } = require('feathers-hooks-common');
+
 const associateCurrentUserToField = require('../../hooks/associate-current-user-to-field');
 
 const restrictToOwnerOrAdmin = require('../../hooks/restrict-to-owner-or-admin');
@@ -10,13 +12,13 @@ const populateProblemSubData = require('../../hooks/populate-problem-sub-data');
 
 module.exports = {
   before: {
-    all: [populateProblemSubData()],
-    find: [],
-    get: [],
+    all: [],
+    find: [populateProblemSubData()],
+    get: [populateProblemSubData()],
     create: [authentication(),associateCurrentUserToField()],
-    update: [authentication(),restrictToOwner(),associateCurrentUserToField()],
-    patch: [authentication(),restrictToOwner(),associateCurrentUserToField()],
-    remove: [authentication(),restrictToOwnerOrAdmin()]
+    update: [disallow()/*authentication(),restrictToOwner(),associateCurrentUserToField()*/],
+    patch: [authentication(),restrictToOwner(),associateCurrentUserToField(),populateProblemSubData()],
+    remove: [authentication(),restrictToOwnerOrAdmin(),populateProblemSubData()]
   },
 
   after: {

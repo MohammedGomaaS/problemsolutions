@@ -75,7 +75,7 @@ Getting up and running is as easy as 1, 2, 3.
 |  delete problem   |    admin, owner    |   delete    |
 |  update problem   |       owner        |    patch    |
 
-### problem-likes
+### problem-likes(not finished)
 
 |  API Name   |   Allowed Users    | HTTP Methods |
 | :---------: | :----------------: | :----------: |
@@ -94,7 +94,7 @@ Getting up and running is as easy as 1, 2, 3.
 |  delete problem-solution   |    admin, owner    |   delete    |
 |  update problem-solution   |       owner        |    patch    |
 
-### solution-likes
+### solution-likes(not finished)
 
 |  API Name   |   Allowed Users    | HTTP Method |
 | :---------: | :----------------: | :---------: |

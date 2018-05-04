@@ -17,8 +17,8 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   problemLikes.associate = function (models) {
-    problemLikes.belongsTo(models.users);
-    problemLikes.belongsTo(models.problems);
+    // problemLikes.belongsTo(models.users);
+    // problemLikes.belongsTo(models.problems);
   };
 
   return problemLikes;

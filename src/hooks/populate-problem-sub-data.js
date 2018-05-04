@@ -17,6 +17,10 @@ module.exports = function (options = {}) {
        
       }]
     }
-    return context;
+    // problemId=context.id;
+    // userId=	context.params.user.id;
+
+    // context.app.service('problem-likes').get()
+    // return context;
   };
 };

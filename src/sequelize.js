@@ -61,9 +61,35 @@ module.exports = function (app) {
         models[name].associate(models);
       }
     });
-
+    
     // Sync to the database
     sequelize.sync();
+    createDefaultUser();
+    function createDefaultUser() {
+
+      sequelize.models.user_types
+        .findOrCreate({ where: { id: '1' }, defaults: { level: 1, description: "admin" } })
+        .spread((user_type, created) => {
+          console.log("Default user_type", user_type.get({
+            plain: true
+          }))
+
+        });
+        sequelize.models.users
+        .findOrCreate({ where: { id: '1' }, defaults: { name: "admin", email: "admin@domain.com", mobile: "01150441989", image: "./", password: "$2a$12$8QzxqPWThT8.SyySWlA4DOUa3ZK1mOjaEnxCroR49CKAvaZC9Cjsq", level: 1 } })
+        .spread((user, created) => {
+          console.log("Default Admin", user.get({
+            plain: true
+          }))
+
+        });
+
+    }
+
+    //return Model.create({ name: "admin", email: "admin@domain", mobile: "01150441989", image: "./", password: "$2a$12$8QzxqPWThT8.SyySWlA4DOUa3ZK1mOjaEnxCroR49CKAvaZC9Cjsq", createdAt: "2018-05-01 09:30:48", updatedAt: "2018-05-01 09:30:48", level: 1 });
+
+
+
 
     return result;
   };

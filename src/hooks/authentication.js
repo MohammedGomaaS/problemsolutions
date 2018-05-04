@@ -3,5 +3,7 @@
 const { authenticate } = require('feathers-authentication').hooks;
 // eslint-disable-next-line no-unused-vars
 module.exports = function (options = {}) {
+ 
   return authenticate('jwt');
+
 };

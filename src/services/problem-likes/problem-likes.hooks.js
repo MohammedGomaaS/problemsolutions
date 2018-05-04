@@ -1,5 +1,5 @@
 
-
+const { disallow, iff } = require('feathers-hooks-common');
 const associateCurrentUserToField = require('../../hooks/associate-current-user-to-field');
 
 const authentication = require('../../hooks/authentication');
@@ -10,8 +10,8 @@ module.exports = {
     find: [],
     get: [],
     create: [authentication(),associateCurrentUserToField()],
-    update: [authentication()],
-    patch: [authentication()],
+    update: [disallow()],
+    patch: [disallow()],
     remove: [authentication(),restrictToOwner()]
   },
 
