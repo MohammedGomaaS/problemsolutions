@@ -66,7 +66,7 @@ module.exports = function (app) {
     sequelize.sync();
     createDefaultUser();
     function createDefaultUser() {
-
+s
       sequelize.models.user_types
         .findOrCreate({ where: { id: '1' }, defaults: { level: 1, description: "admin" } })
         .spread((user_type, created) => {
