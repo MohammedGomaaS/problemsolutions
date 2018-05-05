@@ -66,7 +66,7 @@ module.exports = function (app) {
     sequelize.sync();
     createDefaultUser();
     function createDefaultUser() {
-s
+
       sequelize.models.user_types
         .findOrCreate({ where: { id: '1' }, defaults: { level: 1, description: "admin" } })
         .spread((user_type, created) => {
@@ -74,15 +74,16 @@ s
             plain: true
           }))
 
+          sequelize.models.users
+          .findOrCreate({ where: { id: '1' }, defaults: { name: "admin", email: "admin@domain.com", mobile: "01150441989", image: "./", password: "$2a$12$8QzxqPWThT8.SyySWlA4DOUa3ZK1mOjaEnxCroR49CKAvaZC9Cjsq", level: 1 } })
+          .spread((user, created) => {
+            console.log("Default Admin", user.get({
+              plain: true
+            }))
+  
+          });
         });
-        sequelize.models.users
-        .findOrCreate({ where: { id: '1' }, defaults: { name: "admin", email: "admin@domain.com", mobile: "01150441989", image: "./", password: "$2a$12$8QzxqPWThT8.SyySWlA4DOUa3ZK1mOjaEnxCroR49CKAvaZC9Cjsq", level: 1 } })
-        .spread((user, created) => {
-          console.log("Default Admin", user.get({
-            plain: true
-          }))
-
-        });
+       
 
     }
 

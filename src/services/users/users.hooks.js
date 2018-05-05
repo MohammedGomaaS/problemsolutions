@@ -33,6 +33,7 @@ module.exports = {
 disallow()
     ],
     patch: [
+      authenticate('jwt'),
     hashPassword(),
       hooks.restrictToRoles({
         roles: [1],
