@@ -40,7 +40,7 @@ password:secret
 
 ## REST Services APIs 
 
-To know how to request the services and know the response, download [postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)  from your chrome browser and use this [collection](https://www.getpostman.com/collections/c5ae8705b7942ae8d279) 
+To know how to request the services and know the response, download [postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)  from your chrome browser and use this [collection](https://www.getpostman.com/collections/f59a77529b9f02a5e46f) 
 
 ### login 
 
